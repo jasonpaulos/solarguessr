@@ -1,0 +1,11 @@
+{
+  "name": "solarguessr",
+  "version": "1.0.0",
+  "description": "GeoGuessr but for the whole solar system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jas0n@mit.edu",
+  "license": "MIT"
+}
