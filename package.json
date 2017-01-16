@@ -2,10 +2,17 @@
   "name": "solarguessr",
   "version": "1.0.0",
   "description": "GeoGuessr but for the whole solar system",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jas0n@mit.edu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "angular": "^1.6.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-server-livereload": "^1.9.2"
+  }
 }
