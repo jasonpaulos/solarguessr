@@ -12,12 +12,22 @@ gulp.task('js', function () {
 		.pipe(gulp.dest('client/dist/js'))
 });
 
-gulp.task('copy', ['copy angular'], function () {
+gulp.task('copy', [
+	'copy angular',
+	'copy cesium'
+], function () {
 	return gulp.src([
 			'client/src/**',
 			'!client/src/**/*.js'
 		])
 		.pipe(gulp.dest('client/dist'));
+});
+
+gulp.task('copy cesium', function () {
+	return gulp.src([
+			'node_modules/cesium/Build/Cesium/**',
+		])
+		.pipe(gulp.dest('client/dist/cesium'));
 });
 
 gulp.task('copy angular', function () {

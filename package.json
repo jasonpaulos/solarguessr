@@ -9,7 +9,8 @@
   "author": "jas0n@mit.edu",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.6.1"
+    "angular": "^1.6.1",
+    "cesium": "^1.29.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

@@ -5,11 +5,28 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
 		<script src="/js/angular.min.js"></script>
+		<script src="/cesium/Cesium.js"></script>
 		<script src="/js/solarguessr.js"></script>
+		
+		<link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
 		
 		<title>SolarGuessr</title>
 	</head>
 	<body>
 		1 + 1 = {{ 1 + 1 }}
+		
+		<div id="cesiumContainer"></div>
+		
+		<script>
+			var imageryProvider = Cesium.createTileMapServiceImageryProvider({
+				url: '/cesium/Assets/Textures/NaturalEarthII',
+				fileExtension: 'jpg'
+			});
+			
+			var viewer = new Cesium.Viewer('cesiumContainer', {
+				baseLayerPicker: false,
+				imageryProvider: imageryProvider
+			});
+		</script>
 	</body>
 </html>
