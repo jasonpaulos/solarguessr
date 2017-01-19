@@ -4,29 +4,74 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
+		<script src="/js/kickstart.min.js"></script>
 		<script src="/js/angular.min.js"></script>
 		<script src="/cesium/Cesium.js"></script>
 		<script src="/js/solarguessr.js"></script>
 		
+		<link rel="stylesheet" href="/css/spectre.min.css" />
 		<link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
 		
 		<title>SolarGuessr</title>
 	</head>
 	<body>
-		1 + 1 = {{ 1 + 1 }}
 		
-		<div id="cesiumContainer"></div>
+		<section class="container section" style="padding-left: 5rem; padding-right: 5rem">
+			<header class="navbar">
+				<section class="navbar-section">
+					<a href="#" class="navbar-brand">
+						SolarGuessr
+					</a>
+					<a href="#" class="btn btn-link">About</a>
+					<a href="#" class="btn btn-link">Play</a>
+				</section>
+				<section class="navbar-section">
+					<a href="#" class="btn btn-link">Sign Up</a>
+					<a href="#" class="btn btn-primary">Login</a>
+				</section>
+			</header>
+		</section>
 		
-		<script>
+		<section class="section" style="color: #EEEEEE;background-color: #111111;padding: 1rem .5rem;border-radius: .3rem;">
+			<section class="container" style="margin-top: 10rem;margin-bottom: 5rem;">
+				<header class="text-center" style="color: #5764c6"><h2>SolarGuessr</h2></header>
+				<header class="text-center"><h5>
+					Imagine <a href="https://geoguessr.com/" style="color: #EEEEEE">GeoGuessr</a>, but for the whole solar system
+				</h5></header>
+				<p class="text-center" style="padding-top: 2rem">
+					<a href="#" class="btn btn-lg btn-primary">Play Now</a>
+				</p>
+			</section>
+		</section>
+		
+		<section class="section container" style="background-color: #efefef;padding: 5rem">
+			<h4>Want to get more familiar with our home in the universe?</h4>
+			<p>SolarGuessr places you on a celestial body in our solar system, and you have to figure out exactly where you are.</p>
+		</section>
+		
+		<!--<div id="cesiumContainer"></div>-->
+		<!--<script>
 			var imageryProvider = Cesium.createTileMapServiceImageryProvider({
-				url: '/cesium/Assets/Textures/NaturalEarthII',
+				url: '/cesium/Assets/Textures/Mars',
 				fileExtension: 'jpg'
 			});
 			
 			var viewer = new Cesium.Viewer('cesiumContainer', {
+				animation: false,
 				baseLayerPicker: false,
+				fullscreenButton: true,
+				geocoder: false,
+				homeButton: true,
+				infoBox: false,
+				sceneModePicker: false,
+				selectionIndicator: false,
+				timeline: false,
+				navigationHelpButton: false,
+				navigationInstructionsInitiallyVisible: false,
+				scene3DOnly: true,
+				//skyAtmosphere: false,
 				imageryProvider: imageryProvider
 			});
-		</script>
+		</script>-->
 	</body>
 </html>

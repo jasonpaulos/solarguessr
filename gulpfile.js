@@ -13,6 +13,7 @@ gulp.task('js', function () {
 });
 
 gulp.task('copy', [
+	'copy spectre',
 	'copy angular',
 	'copy cesium'
 ], function () {
@@ -21,6 +22,13 @@ gulp.task('copy', [
 			'!client/src/**/*.js'
 		])
 		.pipe(gulp.dest('client/dist'));
+});
+
+gulp.task('copy spectre', function () {
+	return gulp.src([
+			'node_modules/spectre.css/dist/spectre.min.css',
+		])
+		.pipe(gulp.dest('client/dist/css'));
 });
 
 gulp.task('copy cesium', function () {
