@@ -8,14 +8,14 @@ gulp.task('js', function () {
 	return gulp.src(['client/src/**/*.js'])
 		.pipe(iife())
 		.pipe(concat('solarguessr.js'))
-		//.pipe(uglify())
-		.pipe(gulp.dest('client/dist/js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('client/dist/app'))
 });
 
 gulp.task('copy', [
-	//'copy spectre',
-	//'copy angular',
-	//'copy cesium'
+	'copy spectre',
+	'copy angular',
+	'copy cesium'
 ], function () {
 	return gulp.src([
 			'client/src/**',
