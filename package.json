@@ -4,6 +4,7 @@
   "description": "GeoGuessr but for the whole solar system",
   "main": "server/index.js",
   "scripts": {
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "jas0n@mit.edu",
@@ -13,6 +14,7 @@
     "angular-animate": "^1.6.1",
     "angular-route": "^1.6.1",
     "cesium": "^1.29.0",
+    "express": "^4.14.0",
     "spectre.css": "^0.1.31"
   },
   "devDependencies": {
