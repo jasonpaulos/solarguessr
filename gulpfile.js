@@ -8,14 +8,14 @@ gulp.task('js', function () {
 	return gulp.src(['client/src/**/*.js'])
 		.pipe(iife())
 		.pipe(concat('solarguessr.js'))
-		.pipe(uglify())
+		//.pipe(uglify())
 		.pipe(gulp.dest('client/dist/js'))
 });
 
 gulp.task('copy', [
-	'copy spectre',
-	'copy angular',
-	'copy cesium'
+	//'copy spectre',
+	//'copy angular',
+	//'copy cesium'
 ], function () {
 	return gulp.src([
 			'client/src/**',
@@ -41,7 +41,11 @@ gulp.task('copy cesium', function () {
 gulp.task('copy angular', function () {
 	return gulp.src([
 			'node_modules/angular/angular.min.js',
-			'node_modules/angular/angular.min.js.map'
+			'node_modules/angular/angular.min.js.map',
+			'node_modules/angular-route/angular-route.min.js',
+			'node_modules/angular-route/angular-route.min.js.map',
+			'node_modules/angular-animate/angular-animate.min.js',
+			'node_modules/angular-animate/angular-animate.min.js.map'
 		])
 		.pipe(gulp.dest('client/dist/js'));
 });

@@ -4,19 +4,24 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		
+		<base href="/" />
+		
 		<script src="/js/kickstart.min.js"></script>
 		<script src="/js/angular.min.js"></script>
+		<script src="/js/angular-route.min.js"></script>
+		<script src="/js/angular-animate.min.js"></script>
 		<script src="/cesium/Cesium.js"></script>
 		<script src="/js/solarguessr.js"></script>
 		
 		<link rel="stylesheet" href="/css/spectre.min.css" />
 		<link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
+		<link rel="stylesheet" href="/css/style.css" />
 		
 		<title>SolarGuessr</title>
 	</head>
 	<body>
 		
-		<section class="container section" style="padding-left: 5rem; padding-right: 5rem">
+		<section class="container section" style="padding-left: 5rem; padding-right: 5rem; background-color: #333">
 			<header class="navbar">
 				<section class="navbar-section">
 					<a href="#" class="navbar-brand">
@@ -32,22 +37,78 @@
 			</header>
 		</section>
 		
-		<section class="section" style="color: #EEEEEE;background-color: #111111;padding: 1rem .5rem;border-radius: .3rem;">
-			<section class="container" style="margin-top: 10rem;margin-bottom: 5rem;">
-				<header class="text-center" style="color: #5764c6"><h2>SolarGuessr</h2></header>
-				<header class="text-center"><h5>
-					Imagine <a href="https://geoguessr.com/" style="color: #EEEEEE">GeoGuessr</a>, but for the whole solar system
-				</h5></header>
-				<p class="text-center" style="padding-top: 2rem">
-					<a href="#" class="btn btn-lg btn-primary">Play Now</a>
-				</p>
-			</section>
+		<div ng-view></div>
+		
+		<section class="section container" style="background-color: #111111;padding: 5rem; color: #eeeeee">
+			<p>Footer</p>
 		</section>
 		
-		<section class="section container" style="background-color: #efefef;padding: 5rem">
-			<h4>Want to get more familiar with our home in the universe?</h4>
-			<p>SolarGuessr places you on a celestial body in our solar system, and you have to figure out exactly where you are.</p>
-		</section>
+		<div bn-modals ng-show="subview" class="m-modals" ng-switch="subview">
+			
+			<div class="modal active" ng-switch-when="alert" ng-controller="AlertModalController">
+				<div class="modal-overlay" ng-click="close()"></div>
+				<div class="modal-container">
+					<div class="modal-header">
+						<button class="btn btn-clear float-right" ng-click="close()"></button>
+						<div class="modal-title">
+							Title: {{ message }}
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+							{{ message }}
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-primary" ng-click="close()">OK</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal active" ng-switch-when="confirm" ng-controller="ConfirmModalController">
+				<div class="modal-overlay" ng-click="deny()"></div>
+				<div class="modal-container">
+					<div class="modal-header">
+						<button class="btn btn-clear float-right" ng-click="deny()"></button>
+						<div class="modal-title">
+							Title: {{ message }}
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="content">
+							{{ message }}
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-link" ng-click="deny()">Cancel</button>
+						<button class="btn btn-primary" ng-click="confirm()">Save</button>
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal active" ng-switch-when="prompt" ng-controller="PromptModalController">
+				<div class="modal-overlay" ng-click="cancel()"></div>
+				<form class="modal-container" ng-submit="submit()">
+					<div class="modal-header">
+						<button class="btn btn-clear float-right" ng-click="cancel()"></button>
+						<div class="modal-title">
+							Title: {{ message }}
+						</div>
+					</div>
+					<div class="modal-body">
+						<div class="content form-group">
+							<label class="form-label" for="input-example-1">{{ message }}</label>
+							<input class="form-input" type="text" id="input-example-1" ng-model="form.input" />
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button class="btn btn-link" ng-click="cancel()">Cancel</button>
+						<button class="btn btn-primary" ng-click="submit()">Submit</button>
+					</div>
+				</form>
+			</div>
+			
+		</div>
 		
 		<!--<div id="cesiumContainer"></div>-->
 		<!--<script>
