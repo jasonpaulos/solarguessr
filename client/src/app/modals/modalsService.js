@@ -18,7 +18,7 @@ app.service('modals', ['$rootScope', '$q',
 					.then(previousDeferred.resolve)
 					.catch(previousDeferred.reject);
 			} else if (previousDeferred) {
-				previousDeferred.reject()
+				previousDeferred.reject();
 			}
 			
 			$rootScope.$emit('modals.open', type);

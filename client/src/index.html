@@ -13,6 +13,7 @@
 		<script src="/cesium/Cesium.js"></script>
 		<script src="/app/solarguessr.js"></script>
 		
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="/css/spectre.min.css" />
 		<link rel="stylesheet" href="/cesium/Widgets/widgets.css" />
 		<link rel="stylesheet" href="/css/style.css" />
@@ -21,20 +22,7 @@
 	</head>
 	<body>
 		
-		<section class="container section" style="padding-left: 5rem; padding-right: 5rem; background-color: #333">
-			<header class="navbar">
-				<section class="navbar-section">
-					<a href="#" class="navbar-brand">
-						SolarGuessr
-					</a>
-					<a href="#" class="btn btn-link">About</a>
-					<a href="#" class="btn btn-link">Play</a>
-				</section>
-				<section class="navbar-section">
-					<a href="#" class="btn btn-link">Sign Up</a>
-					<a href="#" class="btn btn-primary">Login</a>
-				</section>
-			</header>
+		<section class="container section" style="padding-left: 5rem; padding-right: 5rem; background-color: #333" ng-include="'/app/routes/nav/navView.html'">
 		</section>
 		
 		<div ng-view></div>
@@ -43,69 +31,29 @@
 			<p>Footer</p>
 		</section>
 		
-		<div bn-modals ng-show="subview" class="m-modals" ng-switch="subview">
+		<div bn-modals ng-show="subview" class="m-modals" ng-switch="subview" ng-controller="ModalController">
 			
-			<div class="modal active" ng-switch-when="alert" ng-controller="AlertModalController">
-				<div class="modal-overlay" ng-click="close()"></div>
-				<div class="modal-container">
-					<div class="modal-header">
-						<button class="btn btn-clear float-right" ng-click="close()"></button>
-						<div class="modal-title">
-							Title: {{ message }}
-						</div>
-					</div>
-					<div class="modal-body">
-						<div class="content">
-							{{ message }}
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-primary" ng-click="close()">OK</button>
-					</div>
-				</div>
-			</div>
-			
-			<div class="modal active" ng-switch-when="confirm" ng-controller="ConfirmModalController">
-				<div class="modal-overlay" ng-click="deny()"></div>
-				<div class="modal-container">
-					<div class="modal-header">
-						<button class="btn btn-clear float-right" ng-click="deny()"></button>
-						<div class="modal-title">
-							Title: {{ message }}
-						</div>
-					</div>
-					<div class="modal-body">
-						<div class="content">
-							{{ message }}
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button class="btn btn-link" ng-click="deny()">Cancel</button>
-						<button class="btn btn-primary" ng-click="confirm()">Save</button>
-					</div>
-				</div>
-			</div>
-			
-			<div class="modal active" ng-switch-when="prompt" ng-controller="PromptModalController">
+			<div class="modal active" ng-switch-when="login">
 				<div class="modal-overlay" ng-click="cancel()"></div>
-				<form class="modal-container" ng-submit="submit()">
+				<div class="modal-container">
 					<div class="modal-header">
 						<button class="btn btn-clear float-right" ng-click="cancel()"></button>
 						<div class="modal-title">
-							Title: {{ message }}
+							Log in with one of these providers
 						</div>
 					</div>
 					<div class="modal-body">
-						<div class="content form-group">
-							<label class="form-label" for="input-example-1">{{ message }}</label>
-							<input class="form-input" type="text" id="input-example-1" ng-model="form.input" />
+						<div class="content">
+							<button class="btn btn-block btn-lg fa-login">
+								<i class="icon fa fa-facebook-official" aria-hidden="true"></i>
+								<span>Facebook</span>
+							</button>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-link" ng-click="cancel()">Cancel</button>
-						<button class="btn btn-primary" ng-click="submit()">Submit</button>
+						<button class="btn btn-primary" ng-click="cancel()">Cancel</button>
 					</div>
-				</form>
+				</div>
 			</div>
 			
 		</div>

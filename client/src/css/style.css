@@ -20,3 +20,24 @@ div.m-modals.ng-hide > .modal.ng-enter {
 div.m-modals.ng-hide > .modal.ng-enter.ng-enter-active {
 	top: 400px ;
 }
+
+.fa-login {
+	background-color: #3b5998;
+	border-color: #3b5998;
+	color: #eeeeee;
+}
+.fa-login:focus {
+	background-color: #3b5998;
+}
+.fa-login:hover {
+	background-color: #3b5998;
+	border-color: #344e86;
+}
+.fa-login:active,
+.fa-login.active {
+	background-color: #344e86;
+	border-color: #2d4373;
+}
+.fa-login > span {
+	margin-left: .7rem;
+}
