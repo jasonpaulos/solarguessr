@@ -1,5 +1,4 @@
 var gulp = require('gulp');
-var server = require('gulp-server-livereload');
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var iife = require("gulp-iife");
@@ -51,18 +50,10 @@ gulp.task('copy angular', function () {
 });
 
 gulp.task('watch', function () {
-	return gulp.watch('client/src/**', ['default']);
+	return gulp.watch('client/src/**', ['build']);
 });
 
-gulp.task('webserver', ['default', 'watch'], function () {
-	return gulp.src('client/dist')
-		.pipe(server({
-			livereload: true,
-			open: true
-		}));
-});
-
-gulp.task('default', [
+gulp.task('build', [
 	'js',
 	'copy'
 ], function () { });
