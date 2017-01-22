@@ -5,7 +5,7 @@
 			SolarGuessr
 		</a>
 		<a href="#" class="btn btn-link">About</a>
-		<a href="#" class="btn btn-link">Play</a>
+		<a href="/play" class="btn btn-link">Play</a>
 	</section>
 	<section class="navbar-section">
 		<a ng-if="!account.isSignedIn()" ng-click="account.login()" ng-class="{loading: !account.getUser()}" class="btn btn-primary">Log in</a>

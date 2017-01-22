@@ -11,7 +11,8 @@ var app = express();
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
 var routes = [
-	'/'
+	'/',
+	'/play'
 ];
 //Route redirects
 routes.forEach(function (route) {

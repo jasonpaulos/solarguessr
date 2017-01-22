@@ -20,14 +20,14 @@
 		
 		<title>SolarGuessr</title>
 	</head>
-	<body>
+	<body ng-controller="MainController">
 		
-		<section class="container section" style="padding-left: 5rem; padding-right: 5rem; background-color: #333" ng-include="'/app/routes/nav/navView.html'">
+		<section ng-if="showNavigation()" class="container section" style="padding-left: 5rem; padding-right: 5rem; background-color: #333" ng-include="'/app/routes/nav/navView.html'">
 		</section>
 		
-		<div ng-view></div>
+		<div ng-class="{fullscreen: !showNavigation()}" ng-view></div>
 		
-		<section class="section container" style="background-color: #111111;padding: 5rem; color: #eeeeee">
+		<section ng-if="showNavigation()" class="section container" style="background-color: #111111;padding: 5rem; color: #eeeeee">
 			<p>Footer</p>
 		</section>
 		
@@ -57,30 +57,5 @@
 			</div>
 			
 		</div>
-		
-		<!--<div id="cesiumContainer"></div>-->
-		<!--<script>
-			var imageryProvider = Cesium.createTileMapServiceImageryProvider({
-				url: '/cesium/Assets/Textures/Mars',
-				fileExtension: 'jpg'
-			});
-			
-			var viewer = new Cesium.Viewer('cesiumContainer', {
-				animation: false,
-				baseLayerPicker: false,
-				fullscreenButton: true,
-				geocoder: false,
-				homeButton: true,
-				infoBox: false,
-				sceneModePicker: false,
-				selectionIndicator: false,
-				timeline: false,
-				navigationHelpButton: false,
-				navigationInstructionsInitiallyVisible: false,
-				scene3DOnly: true,
-				//skyAtmosphere: false,
-				imageryProvider: imageryProvider
-			});
-		</script>-->
 	</body>
 </html>
