@@ -28,6 +28,7 @@ div.m-modals.ng-hide > .modal.ng-enter.ng-enter-active {
 }
 .fa-login:focus {
 	background-color: #3b5998;
+	color: #eeeeee;
 }
 .fa-login:hover {
 	background-color: #3b5998;

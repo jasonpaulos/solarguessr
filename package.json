@@ -15,12 +15,17 @@
     "angular-route": "^1.6.1",
     "cesium": "^1.29.0",
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
+    "passport": "^0.3.2",
+    "passport-facebook": "^2.1.1",
     "spectre.css": "^0.1.31"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-iife": "^0.3.0",
-    "gulp-uglify": "^2.0.0"
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4"
   }
 }

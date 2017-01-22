@@ -2,6 +2,13 @@ var gulp = require('gulp');
 var concat = require("gulp-concat");
 var uglify = require("gulp-uglify");
 var iife = require("gulp-iife");
+var jshint = require('gulp-jshint');
+
+gulp.task('lint', function () {
+	return gulp.src(['client/src/**/*.js'])
+		.pipe(jshint())
+		.pipe(jshint.reporter('default'));
+});
 
 gulp.task('js', function () {
 	return gulp.src(['client/src/**/*.js'])
