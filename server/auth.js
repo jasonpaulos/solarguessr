@@ -21,9 +21,9 @@ module.exports = function register(app) {
 	});
 	
 	passport.use(new FacebookStrategy({
-		clientID: config.facebook.appId,
-		clientSecret: config.facebook.appSecret,
-		callbackURL: 'http://localhost:8080/auth/facebook/callback',
+		clientID: config.authentication.facebook.appId,
+		clientSecret: config.authentication.facebook.appSecret,
+		callbackURL: config.baseUrl + '/auth/facebook/callback',
 		enableProof: true,
 		profileFields: [
 			'id',

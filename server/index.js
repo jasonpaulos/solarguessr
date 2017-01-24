@@ -4,7 +4,7 @@ var path = require('path');
 var express = require('express');
 var session = require('express-session');
 
-var auth = require('./auth/auth.js');
+var auth = require('./auth.js');
 
 var app = express();
 

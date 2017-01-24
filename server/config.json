@@ -1,0 +1,9 @@
+{
+  "baseUrl": "http://localhost:8080",
+  "authentication": {
+    "facebook": {
+      "appId": "xxx",
+      "appSecret": "xxx"
+    }
+  }
+}
