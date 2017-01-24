@@ -31,6 +31,6 @@ app.use(session({
 
 auth(app);
 
-app.listen(8080, function () {
+app.listen(8080, 'localhost', function () {
 	console.log('Server listening on port 8080')
 });
