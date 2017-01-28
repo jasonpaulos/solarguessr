@@ -20,7 +20,6 @@ gulp.task('js', function () {
 
 gulp.task('copy', [
 	'copy spectre',
-	'copy angular',
 	'copy cesium'
 ], function () {
 	return gulp.src([
@@ -42,18 +41,6 @@ gulp.task('copy cesium', function () {
 			'node_modules/cesium/Build/Cesium/**',
 		])
 		.pipe(gulp.dest('client/dist/cesium'));
-});
-
-gulp.task('copy angular', function () {
-	return gulp.src([
-			'node_modules/angular/angular.min.js',
-			'node_modules/angular/angular.min.js.map',
-			'node_modules/angular-route/angular-route.min.js',
-			'node_modules/angular-route/angular-route.min.js.map',
-			'node_modules/angular-animate/angular-animate.min.js',
-			'node_modules/angular-animate/angular-animate.min.js.map'
-		])
-		.pipe(gulp.dest('client/dist/js'));
 });
 
 gulp.task('watch', function () {
