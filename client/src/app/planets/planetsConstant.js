@@ -3,19 +3,19 @@ var app = angular.module('solarguessr');
 app.constant('planets', [
 	{
 		name: 'Venus',
-		img: ['/planets/Venus/0/0/0.jpg', '/planets/Venus/0/1/0.jpg'],
-		url: '/planets/Venus'
+		img: ['https://jas0n.scripts.mit.edu/solarguessr/Venus/0/0/0.jpg', 'https://jas0n.scripts.mit.edu/solarguessr/Venus/0/1/0.jpg'],
+		url: 'https://jas0n.scripts.mit.edu/solarguessr/Venus'
 	} ,{
 		name: 'Earth',
-		img: ['/planets/Earth/0/0/0.jpg', '/planets/Earth/0/1/0.jpg'],
-		url: '/planets/Earth'
+		img: ['https://jas0n.scripts.mit.edu/solarguessr/Earth/0/0/0.jpg', 'https://jas0n.scripts.mit.edu/solarguessr/Earth/0/1/0.jpg'],
+		url: 'https://jas0n.scripts.mit.edu/solarguessr/Earth'
 	}, {
 		name: 'Moon',
-		img: ['/planets/Moon/0/0/0.jpg', '/planets/Moon/0/1/0.jpg'],
-		url: '/planets/Moon'
+		img: ['https://jas0n.scripts.mit.edu/solarguessr/Moon/0/0/0.jpg', 'https://jas0n.scripts.mit.edu/solarguessr/Moon/0/1/0.jpg'],
+		url: 'https://jas0n.scripts.mit.edu/solarguessr/Moon'
 	}, {
 		name: 'Mars',
-		img: ['/planets/Mars/0/0/0.jpg', '/planets/Mars/0/1/0.jpg'],
-		url: '/planets/Mars'
+		img: ['https://jas0n.scripts.mit.edu/solarguessr/Mars/0/0/0.jpg', 'https://jas0n.scripts.mit.edu/solarguessr/Mars/0/1/0.jpg'],
+		url: 'https://jas0n.scripts.mit.edu/solarguessr/Mars'
 	}
 ]);
