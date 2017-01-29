@@ -1,3 +1,5 @@
+//Inspired by https://www.bennadel.com/blog/2806-creating-a-simple-modal-system-in-angularjs.htm
+
 var app = angular.module('solarguessr');
 
 app.service('modals', ['$rootScope', '$q',
