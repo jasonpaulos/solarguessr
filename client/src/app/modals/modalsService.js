@@ -11,7 +11,7 @@ app.service('modals', ['$rootScope', '$q',
 			var previousDeferred = modal.deferred;
 			
 			modal.deferred = $q.defer();
-			modal.params = params;
+			modal.params = params || {};
 			
 			if (previousDeferred && pipeResponse) {
 				modal.deferred.promise
@@ -27,7 +27,7 @@ app.service('modals', ['$rootScope', '$q',
 		}
 		
 		function params() {
-			return modal.params || {};
+			return modal.params;
 		}
 		
 		function proceedTo(type, params) {

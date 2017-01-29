@@ -10,6 +10,7 @@ div.m-modals {
 	position: fixed ;
 	right: 0px ;
 	top: 0px ;
+	z-index: 5 !important;
 }
 
 div.m-modals.ng-hide-add.ng-hide-add-active,
@@ -56,4 +57,42 @@ div.m-modals.ng-hide > .modal.ng-enter.ng-enter-active {
 #cesiumContainer {
 	width: 100%;
 	height: 100%;
+}
+
+.planet-selector, .planet-location-selector {
+	margin: 0;
+	padding: 0;
+}
+
+.planet-selector label {
+	display: inline-block;
+	margin: 1rem;
+	padding: 0;
+}
+
+.planet-selector p {
+	margin-bottom: 0;
+}
+
+.planet-selector i {
+	margin: 1rem auto;
+	position: static !important;
+	display: block !important;
+}
+
+.planet-location-selector > div{
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+.planet-location-selector img {
+	display: inline-block;
+	margin: 0;
+	padding: 0;
+	width: 50%;
+}
+
+.cesium-credit-image {
+	display: none;
 }

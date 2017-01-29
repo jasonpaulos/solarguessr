@@ -7,3 +7,4 @@ Imagine [GeoGuessr](https://geoguessr.com/), but for the whole solar system
 
 ## Sources
 Angular Modals: https://www.bennadel.com/blog/2806-creating-a-simple-modal-system-in-angularjs.htm
+Horizontal FOV: https://www.opengl.org/discussion_boards/showthread.php/168009-How-to-get-the-horizontal-fov
