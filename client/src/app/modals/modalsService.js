@@ -9,6 +9,10 @@ app.service('modals', ['$rootScope', '$q',
 			params: null
 		};
 		
+		$rootScope.$on('$locationChangeStart', function () {
+			reject();
+		});
+		
 		function open(type, params, pipeResponse) {
 			var previousDeferred = modal.deferred;
 			
