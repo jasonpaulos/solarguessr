@@ -7,7 +7,29 @@ app.controller('PlayController', ['$scope', 'modals', 'planets',
 				options: planets,
 				guess: {
 					planet: null,
-					location: ''
+					location: null
+				},
+				styleLocation: null,
+				selectLocation: function (event) {
+					var offsetX = event.offsetX;
+					var offsetY = event.offsetY;
+					
+					console.log(offsetY + '/' + event.target.clientHeight);
+					
+					var lon = 360.0 * (offsetX / event.target.clientWidth) - 180.0;
+					var lat = 180.0 / Cesium.Math.PI * Math.acos(2.0 * offsetY / event.target.clientHeight - 1.0) - 90.0;
+					
+					this.guess.location = {
+						lon: lon,
+						lat: lat
+					};
+					
+					offsetX -= 15; //.guess-pin width/2
+					offsetY -= 43; // guess-pin height
+					this.styleLocation = {
+						top: offsetY + 'px',
+						left: offsetX + 'px'
+					};
 				}
 			}
 			
@@ -58,7 +80,7 @@ app.controller('PlayController', ['$scope', 'modals', 'planets',
 		var camera = viewer.camera;
 		
 		var longitude = getRandomArbitrary(-180.0, 180.0);
-		var latitude = Math.acos(getRandomArbitrary(-1.0, 1.0));
+		var latitude = 180.0 / Cesium.Math.PI * Math.acos(getRandomArbitrary(-1.0, 1.0));
 		var height = 500000.0;
 		var heading = getRandomArbitrary(0, 2*Cesium.Math.PI);
 		

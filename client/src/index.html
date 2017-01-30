@@ -88,12 +88,18 @@
 								</label>
 							</div>
 							<p>Select a location</p>
-							<div class="planet-location-selector">
+							<div class="planet-location-selector" ng-if="params().guess.planet">
 								<p>{{ params().guess.name }}</p>
 								<div>
 									<img ng-src="{{params().guess.planet.img[0]}}" />
 									<img ng-src="{{params().guess.planet.img[1]}}" />
+									<div class="guess-pin" ng-style="params().styleLocation" ng-if="params().styleLocation"></div>
+									<div class="guess-box" ng-click="params().selectLocation($event)"></div>
 								</div>
+							</div>
+							<div ng-if="params().guess.location">
+								<p>Longitude: {{ params().guess.location.lon }}</p>
+								<p>Latitude: {{ params().guess.location.lat }}</p>
 							</div>
 						</div>
 					</div>
