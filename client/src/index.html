@@ -87,7 +87,7 @@
 									</figure>
 								</label>
 							</div>
-							<p>Select a location</p>
+							<p ng-if="params().guess.planet">Select a location</p>
 							<div class="planet-location-selector" ng-if="params().guess.planet">
 								<p>{{ params().guess.name }}</p>
 								<div>
@@ -97,15 +97,11 @@
 									<div class="guess-box" ng-click="params().selectLocation($event)"></div>
 								</div>
 							</div>
-							<div ng-if="params().guess.location">
-								<p>Longitude: {{ params().guess.location.lon }}</p>
-								<p>Latitude: {{ params().guess.location.lat }}</p>
-							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
 						<button class="btn btn-link" ng-click="cancel()">Cancel</button>
-						<button class="btn btn-primary" ng-click="confirm(params().guess)">Guess</button>
+						<button class="btn btn-primary" ng-click="confirm(params().guess)" ng-disabled="!params().guess.location">Guess</button>
 					</div>
 				</div>
 			</div>

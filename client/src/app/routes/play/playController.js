@@ -1,7 +1,7 @@
 var app = angular.module('solarguessr');
 
-app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
-	function ($scope, modals, planets, score) {
+app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'score',
+	function ($scope, $timeout, modals, planets, score) {
 		var actualLocation = {
 			planet: null,
 			location: {
@@ -87,8 +87,10 @@ app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
 			looking = false;
 		}, Cesium.ScreenSpaceEventType.LEFT_UP);
 		
+		var canLook = true;
+		
 		viewer.clock.onTick.addEventListener(function (clock) {
-			if (looking) {
+			if (canLook && looking) {
 				var width = canvas.clientWidth;
 				var height = canvas.clientHeight;
 				
@@ -109,6 +111,23 @@ app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
 				camera.lookUp(y * lookFactor);
 			}
 		});
+		
+		$scope.showScore = false;
+		$scope.canGuess = true;
+		
+		function showScore(score) {
+			$scope.score = score;
+			$scope.canGuess = false;
+			canLook = false;
+			
+			camera.flyHome(2);
+			
+			$timeout(function () {
+				$scope.showScore = true;
+			}, 1500);
+		}
+		
+		$scope.actualLocation = actualLocation;
 		
 		$scope.makeGuess = function () {
 			var params = {
@@ -144,7 +163,8 @@ app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
 			
 			return modals.open('guess', params)
 				.then(function (guess) {
-					console.log(JSON.stringify(score.calculateScore(actualLocation, guess)));
+					$scope.guessLocation = guess;
+					showScore(score.calculateScore(actualLocation, guess));
 				}, function () {
 					
 				});

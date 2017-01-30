@@ -20,4 +20,8 @@ Latitude/Longitude surface distance: http://www8.nau.edu/cvm/latlon_formula.html
 
 Mercator projection conversion: http://wiki.openstreetmap.org/wiki/Mercator
 
+Text stroke: https://css-tricks.com/adding-stroke-to-web-text/
+
+Vertical align: http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/
+
 Favicon generation: http://realfavicongenerator.net/

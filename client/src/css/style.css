@@ -113,6 +113,58 @@ div.m-modals.ng-hide > .modal.ng-enter.ng-enter-active {
 	background-repeat: no-repeat;
 }
 
+.guess-location {
+	position: absolute;
+	top: 1rem;
+	left: 0;
+	right: 0;
+	z-index: 1;
+}
+
+.score-box {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	color: #e74c3c;
+	
+	transition: all linear 0.5s;
+	
+	/* From http://zerosixthree.se/vertical-align-anything-with-just-3-lines-of-css/ */
+	-webkit-transform: perspective(1px) translateY(-50%);
+	-ms-transform: perspective(1px) translateY(-50%);
+	transform: perspective(1px) translateY(-50%);
+}
+
+.score-box.ng-hide {
+	opacity: 0;
+}
+
+/* Text outlines from https://css-tricks.com/adding-stroke-to-web-text/ */
+
+.score-box h1 {
+	text-shadow:
+       3px 3px 0 #111111,
+     -1px -1px 0 #111111,  
+      1px -1px 0 #111111,
+      -1px 1px 0 #111111,
+       1px 1px 0 #111111;
+}
+
+.score-box h3, .score-box h4 {
+	font-weight: 500;
+	text-shadow:
+	  -1px -1px 0 #111111,  
+      1px -1px 0 #111111,
+      -1px 1px 0 #111111,
+       1px 1px 0 #111111;
+}
+
+.score-box span {
+	color: #c8cdd0;
+}
+
 .cesium-credit-image {
 	display: none;
 }

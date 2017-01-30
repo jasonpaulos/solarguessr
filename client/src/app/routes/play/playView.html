@@ -1,6 +1,21 @@
 
 <div id="cesiumContainer"></div>
 
-<div class="text-center" style="position:absolute; top: 1rem; left: 1rem; right: 1rem; z-index: 1;">
+<div class="text-center guess-location" ng-disabled="!canGuess">
 	<button ng-click="makeGuess()" class="btn btn-primary">Guess location</button>
+</div>
+
+<div class="text-center score-box" ng-show="showScore">
+	<h1 class="fancy-styled-text">
+		{{ actualLocation.planet.name }}
+	</h1>
+	<h3>
+		<span>You guessed:</span> {{ guessLocation.planet.name }}
+	</h3>
+	<h4>
+		<span>System points:</span> {{ score.systemScore }}
+	</h4>
+	<h4>
+		<span>Planet points:</span> {{ score.planetScore }}
+	</h4>
 </div>
