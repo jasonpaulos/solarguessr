@@ -1,50 +1,19 @@
 var app = angular.module('solarguessr');
 
-app.controller('PlayController', ['$scope', 'modals', 'planets',
-	function ($scope, modals, planets) {
-		$scope.makeGuess = function () {
-			var params = {
-				options: planets,
-				guess: {
-					planet: null,
-					location: null
-				},
-				styleLocation: null,
-				selectLocation: function (event) {
-					var offsetX = event.offsetX;
-					var offsetY = event.offsetY;
-					
-					console.log(offsetY + '/' + event.target.clientHeight);
-					
-					var lon = 360.0 * (offsetX / event.target.clientWidth) - 180.0;
-					var lat = 180.0 / Cesium.Math.PI * Math.acos(2.0 * offsetY / event.target.clientHeight - 1.0) - 90.0;
-					
-					this.guess.location = {
-						lon: lon,
-						lat: lat
-					};
-					
-					offsetX -= 15; //.guess-pin width/2
-					offsetY -= 43; // guess-pin height
-					this.styleLocation = {
-						top: offsetY + 'px',
-						left: offsetX + 'px'
-					};
-				}
+app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
+	function ($scope, modals, planets, score) {
+		var actualLocation = {
+			planet: null,
+			location: {
+				lon: null,
+				lat: null
 			}
-			
-			return modals.open('guess', params)
-				.then(function (res) {
-					console.log(JSON.stringify(res));
-				}, function () {
-					
-				});
 		};
 		
-		var planet = planets[Math.floor(Math.random() * planets.length)];
+		actualLocation.planet = planets[Math.floor(Math.random() * planets.length)];
 		
 		var imageryProvider = Cesium.createTileMapServiceImageryProvider({
-			url: planet.url,
+			url: actualLocation.planet.url,
 			fileExtension: 'jpg'
 		});
 		
@@ -79,13 +48,13 @@ app.controller('PlayController', ['$scope', 'modals', 'planets',
 		
 		var camera = viewer.camera;
 		
-		var longitude = getRandomArbitrary(-180.0, 180.0);
-		var latitude = 180.0 / Cesium.Math.PI * Math.acos(getRandomArbitrary(-1.0, 1.0));
+		actualLocation.location.lon = getRandomArbitrary(-180.0, 180.0);
+		actualLocation.location.lat = 180.0 / Cesium.Math.PI * Math.acos(getRandomArbitrary(-1.0, 1.0));
 		var height = 500000.0;
 		var heading = getRandomArbitrary(0, 2*Cesium.Math.PI);
 		
 		camera.setView({
-			destination: Cesium.Cartesian3.fromDegrees(longitude, latitude, height),
+			destination: Cesium.Cartesian3.fromDegrees(actualLocation.location.lon, actualLocation.location.lat, height),
 			orientation: {
 				heading: heading,
 				pitch: -Cesium.Math.PI_OVER_TWO,
@@ -140,5 +109,42 @@ app.controller('PlayController', ['$scope', 'modals', 'planets',
 				camera.lookUp(y * lookFactor);
 			}
 		});
+		
+		$scope.makeGuess = function () {
+			var params = {
+				options: planets,
+				guess: {
+					planet: null,
+					location: null
+				},
+				styleLocation: null,
+				selectLocation: function (event) {
+					var offsetX = event.offsetX;
+					var offsetY = event.offsetY;
+					
+					var lon = 360.0 * (offsetX / event.target.clientWidth) - 180.0;
+					var lat = 180.0 / Cesium.Math.PI * Math.acos(2.0 * offsetY / event.target.clientHeight - 1.0) - 90.0;
+					
+					this.guess.location = {
+						lon: lon,
+						lat: lat
+					};
+					
+					offsetX -= 15; //.guess-pin width/2
+					offsetY -= 43; // guess-pin height
+					this.styleLocation = {
+						top: offsetY + 'px',
+						left: offsetX + 'px'
+					};
+				}
+			};
+			
+			return modals.open('guess', params)
+				.then(function (guess) {
+					console.log(JSON.stringify(score.calculateScore(actualLocation, guess)));
+				}, function () {
+					
+				});
+		};
 	}
 ]);

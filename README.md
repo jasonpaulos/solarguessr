@@ -16,4 +16,6 @@ Angular Modals: https://www.bennadel.com/blog/2806-creating-a-simple-modal-syste
 
 Horizontal FOV: https://www.opengl.org/discussion_boards/showthread.php/168009-How-to-get-the-horizontal-fov
 
+Latitude/Longitude surface distance: http://www8.nau.edu/cvm/latlon_formula.html
+
 Favicon generation: http://realfavicongenerator.net/
