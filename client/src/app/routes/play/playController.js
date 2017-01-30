@@ -123,7 +123,10 @@ app.controller('PlayController', ['$scope', 'modals', 'planets', 'score',
 					var offsetY = event.offsetY;
 					
 					var lon = 360.0 * (offsetX / event.target.clientWidth) - 180.0;
-					var lat = 180.0 / Cesium.Math.PI * Math.acos(2.0 * offsetY / event.target.clientHeight - 1.0) - 90.0;
+					
+					//Equation from http://wiki.openstreetmap.org/wiki/Mercator
+					var g = (offsetY - event.target.clientHeight/2) / (-(event.target.clientHeight / (2 * Math.PI)));
+					var lat = 180.0 / Math.PI * (2 * Math.atan(Math.exp(g)) - 0.5 * Math.PI);
 					
 					this.guess.location = {
 						lon: lon,
