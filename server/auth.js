@@ -3,6 +3,8 @@
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var config = require('./config.json');
+var db = require('monk')(config.db);
+var users = db.get('users');
 
 module.exports = function register(app) {
 	app.use(passport.initialize());
@@ -37,18 +39,23 @@ module.exports = function register(app) {
 		]
 	}, function(token, refreshToken, profile, done) {
 		var user = {
-			id: profile.id,
+			facebook_id: profile.id,
 			profile: profile.profileUrl,
 			picture: profile.photos[0].value,
 			fullName: profile.displayName,
-			firstName: profile.name.givenName
+			firstName: profile.name.givenName,
+			friends: profile._json.friends.data.map(function (f) { return f.id; })
 		};
 		
-		//TODO: handle new user
-		console.log(JSON.stringify(user, 2, 2));
-		
-		process.nextTick(function () {
-			done(null, user);
+		users.findOneAndUpdate({
+			facebook_id: user.facebook_id
+		}, user, {
+			upsert: true,
+			returnNewDocument: true
+		}, function (err, doc) {
+			if (err) return done(err);
+			console.log(JSON.stringify(doc, 2, 2));
+			done(null, doc);
 		});
 	}));
 	

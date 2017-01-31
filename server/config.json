@@ -2,7 +2,9 @@
   "bindIp": "localhost",
   "bindPort": 8080,
   "serveStatic": true,
-  "baseUrl": "http://localhost:8080",
+  "baseUrl": "http://localhost:8000",
+  "sessionSecret": "xxx",
+  "db": "mongodb://localhost:27017/solarguessr",
   "authentication": {
     "facebook": {
       "appId": "xxx",
