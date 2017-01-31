@@ -12,13 +12,15 @@ module.exports = function register(app) {
 	
 	passport.serializeUser(function(user, done) {
 		process.nextTick(function () {
-			done(null, user);
+			done(null, user._id);
 		});
 	});
 	
 	passport.deserializeUser(function(sessionUser, done) {
-		process.nextTick(function () {
-			done(null, sessionUser);
+		users.findOne({ _id: sessionUser }, function (err, doc) {
+			if (err) return done(err);
+			
+			return done(null, doc);
 		});
 	});
 	
@@ -54,7 +56,7 @@ module.exports = function register(app) {
 			returnNewDocument: true
 		}, function (err, doc) {
 			if (err) return done(err);
-			console.log(JSON.stringify(doc, 2, 2));
+			
 			done(null, doc);
 		});
 	}));

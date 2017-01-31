@@ -2,11 +2,13 @@
 
 var path = require('path');
 var express = require('express');
+var bodyParser = require('body-parser');
 var session = require('express-session');
 var MongoDBStore = require('connect-mongodb-session')(session);
 
 var config = require('./config.json');
 var auth = require('./auth.js');
+var scores = require('./scores.js');
 
 var app = express();
 
@@ -27,6 +29,11 @@ app.use(session({
 }));
 
 auth(app);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+scores(app);
 
 if (config.serveStatic) {
 	app.use(express.static(path.join(__dirname, '../client/dist')));

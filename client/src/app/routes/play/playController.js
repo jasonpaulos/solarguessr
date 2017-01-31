@@ -115,8 +115,9 @@ app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'sc
 		$scope.showScore = false;
 		$scope.canGuess = true;
 		
-		function showScore(score) {
-			$scope.score = score;
+		function showScore(user_score) {
+			$scope.score = user_score;
+			
 			$scope.canGuess = false;
 			canLook = false;
 			
@@ -125,6 +126,14 @@ app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'sc
 			$timeout(function () {
 				$scope.showScore = true;
 			}, 1500);
+			
+			score.postScore(user_score)
+				.then(function (res) {
+					console.log('Score posted');
+				})
+				.catch(function (err) {
+					console.error(err);
+				});
 		}
 		
 		$scope.actualLocation = actualLocation;

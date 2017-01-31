@@ -38,7 +38,6 @@ app.service('account', ['$http', 'modals',
 						data.user = res.data;
 						data.gettingUser = false;
 					}, function (res) {
-						data.gettingUser = false;
 						console.error('Could not get user information');
 					});
 			}

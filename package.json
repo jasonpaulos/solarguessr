@@ -11,6 +11,8 @@
   "author": "jas0n@mit.edu",
   "license": "MIT",
   "dependencies": {
+    "async": "^2.1.4",
+    "body-parser": "^1.16.0",
     "cesium": "^1.29.0",
     "connect-mongodb-session": "^1.3.0",
     "express": "^4.14.0",

@@ -12,8 +12,8 @@ app.service('score', ['$http', 'planets',
 			}
 			
 			return {
-				systemScore: systemScore,
-				planetScore: planetScore
+				systemScore: Math.round(systemScore),
+				planetScore: Math.round(planetScore)
 			};
 		}
 		
@@ -52,8 +52,14 @@ app.service('score', ['$http', 'planets',
 					)* radius);
 		}
 		
+		function postScore(user_score) {
+			var score = user_score.systemScore + user_score.planetScore;
+			return $http.post('/score', { score: score });
+		}
+		
 		return {
-			calculateScore: calculateScore
+			calculateScore: calculateScore,
+			postScore: postScore
 		};
 	}
 ]);
