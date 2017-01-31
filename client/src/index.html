@@ -34,7 +34,9 @@
 		<div ng-class="{fullscreen: !showNavigation()}" ng-view></div>
 		
 		<section ng-if="showNavigation()" class="section container" style="background-color: #111111;padding: 5rem; color: #eeeeee">
-			<p>Footer</p>
+			<p>Space imagery provided by <a href="http://www.celestiamotherlode.net/">The Celestia Motherlode</a></p>
+			<p>Rendering by <a href="http://cesiumjs.org/">Cesium</a></p>
+			<p>Made by <a href="mailto:jas0n@mit.edu">Jason Paulos</a> for <a href="http://6.148.scripts.mit.edu/2017/">6.148</a></p>
 		</section>
 		
 		<div bn-modals ng-show="subview" class="m-modals" ng-switch="subview" ng-controller="ModalController">

@@ -14,11 +14,40 @@
 <section class="section container" style="background-color: #c8cdd0;padding: 5rem">
 	<h4>Want to get more familiar with our home in the universe?</h4>
 	<p>SolarGuessr places you on a celestial body in our solar system, and you have to figure out exactly where you are.</p>
+	<p>Look around by clicking and dragging the screen, then guess where you are when you're ready.</p>
+	<p>Your guess will be given two ratings: the system score and planet score.</p>
+	<ul>
+		<li>The system score is based on how close you are the actual planetary system</li>
+		<li>If you choose the right planet, the planet score is based on how close you are to the actual location on that planet</li>
+	<ul>
 </section>
 
 <section class="section container" style="background-color: #eeeeee;padding: 5rem">
-	<h4>Worldwide Leaderboard:</h4>
-	<table class="table table-striped">
+	<h4>Leaderboard:</h4>
+	<div>
+		<div class="form-group float-right">
+                        <label class="form-switch">
+                                <input type="checkbox" ng-model="opts.ascending" ng-change="optsChanged()" />
+                                <i class="form-icon"></i> {{ opts.ascending ? 'Ascending' : 'Descending' }}
+                        </label>
+                </div>
+		<div class="form-group float-right">
+                        <label class="form-switch">
+                                <input type="checkbox" ng-model="opts.friendsOnly" ng-change="optsChanged(true)" />
+                                <i class="form-icon"></i> {{ opts.friendsOnly ? 'Friends' : 'Everyone' }}
+                        </label>
+                </div>
+		<div class="form-group float-right" style="margin-right: 2rem;">
+			<label>
+				Sort By:
+				<select class="form-select" ng-model="opts.sort" ng-change="optsChanged()">
+					<option value="score">Score</option>
+					<option value="date">Date</option>
+				</select>
+			</label>
+		</div>
+	</div>
+	<table class="table table-striped clearfix">
 		<thead>
 			<tr>
 				<th>name</th>
@@ -29,19 +58,23 @@
 		<tbody>
 			<tr ng-repeat="record in leaderboard">
 				<td>
-					<figure class="avatar">
+					<figure class="avatar" style="margin-right: 1rem;">
 						<img ng-src="{{record.picture}}" />
 					</figure>
-					record.fullName
+					{{record.fullName}}
 				</td>
-				<td>record.score</td>
-				<td>record.date</td>
+				<td>{{record.score}}</td>
+				<td>{{record.date}}</td>
 			</tr>
 		</tbody>
 	</table>
 </section>
 
 <section class="section container" style="background-color: #c8cdd0;padding: 5rem">
-	<h4>Placeholder</h4>
-	<p>Placeholder</p>
+	<h4>Coming soon</h4>
+	<ul>
+		<li>More planets and moons</li>
+		<li>VR support</li>
+		<li>Personal statistics</li>
+	</ul>
 </section>

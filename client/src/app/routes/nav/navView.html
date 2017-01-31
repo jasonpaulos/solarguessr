@@ -1,24 +1,21 @@
 
 <header class="navbar" ng-controller="NavController">
 	<section class="navbar-section">
-		<a href="#" class="navbar-brand">
-			SolarGuessr
-		</a>
-		<a href="#" class="btn btn-link">About</a>
+		<a href="/" class="btn btn-link">SolarGuessr</a>
 		<a href="/play" class="btn btn-link">Play</a>
 	</section>
 	<section class="navbar-section">
 		<a ng-if="!account.isSignedIn()" ng-click="account.login()" ng-class="{loading: !account.getUser()}" class="btn btn-primary">Log in</a>
 		
 		<span ng-if="account.isSignedIn()">
-			<a class="btn btn-link" style="padding-top: 0; padding-bottom: 0;">
+			<span style="padding-top: 0; padding-bottom: 0; color: #ffffff;">
 				<span style="display: inline-block; margin-top: .7rem; margin-bottom: .7rem;">
 					{{ account.getUser().fullName }}
 				</span>
 				<figure class="avatar" style="margin-top: -.3rem;">
 					<img ng-src="{{account.getUser().picture}}" />
 				</figure>
-			</a>
+			</span>
 			<a ng-if="account.isSignedIn()" ng-click="account.logout()" class="btn btn-primary">Sign Out</a>
 		</span>
 	</section>

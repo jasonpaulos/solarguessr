@@ -129,12 +129,45 @@ app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'sc
 			
 			score.postScore(user_score)
 				.then(function (res) {
-					console.log('Score posted');
+					
 				})
 				.catch(function (err) {
 					console.error(err);
 				});
 		}
+		
+		$scope.playAgain = function () {
+			var layers = viewer.scene.imageryLayers;
+			
+			actualLocation.planet = planets[Math.floor(Math.random() * planets.length)];
+			
+			var imageryProvider = Cesium.createTileMapServiceImageryProvider({
+				url: actualLocation.planet.url,
+                        	fileExtension: 'jpg'
+               		});
+			
+			layers.removeAll()
+			layers.addImageryProvider(imageryProvider);
+	
+			actualLocation.location.lon = getRandomArbitrary(-180.0, 180.0);
+	                actualLocation.location.lat = 180.0 / Cesium.Math.PI * Math.acos(getRandomArbitrary(-1.0, 1.0));
+	                var height = 500000.0;
+	                var heading = getRandomArbitrary(0, 2*Cesium.Math.PI);
+	
+	                camera.setView({
+	                        destination: Cesium.Cartesian3.fromDegrees(actualLocation.location.lon, actualLocation.location.lat, height),
+	                        orientation: {
+	                                heading: heading,
+	                                pitch: -Cesium.Math.PI_OVER_TWO,
+	                                roll: 0.0
+	                        }
+	                });
+
+			$scope.score = null;
+			$scope.showScore = false;
+			$scope.canGuess = true;
+			canLook = true;
+		};
 		
 		$scope.actualLocation = actualLocation;
 		

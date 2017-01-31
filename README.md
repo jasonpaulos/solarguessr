@@ -6,6 +6,8 @@ Team i<sup>i</sup> is a real number
 Imagine [GeoGuessr](https://geoguessr.com/), but for the whole solar system
 
 ## Sources
+Space imagery: http://www.celestiamotherlode.net/
+
 AngularJS 1: https://angularjs.org/
 
 Cesium: http://cesiumjs.org/
