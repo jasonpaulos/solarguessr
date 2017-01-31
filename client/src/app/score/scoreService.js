@@ -57,9 +57,34 @@ app.service('score', ['$http', 'planets',
 			return $http.post('/score', { score: score });
 		}
 		
+		function getLeaderboard(opts) {
+			var params = {};
+			
+			if (opts.friends) {
+				params.friends = 1;
+			}
+			
+			if (opts.limit) {
+				params.limit = opts.limit;
+			}
+			
+			if (opts.sort) {
+				params.sort = opts.sort;
+			}
+			
+			if (opts.sortDir) {
+				params.sortDir = opts.sortDir;
+			}
+			
+			return $http.get('/leaderboard', {
+				params: params
+			});
+		}
+		
 		return {
 			calculateScore: calculateScore,
-			postScore: postScore
+			postScore: postScore,
+			getLeaderboard: getLeaderboard
 		};
 	}
 ]);

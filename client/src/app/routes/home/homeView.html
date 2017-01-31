@@ -27,10 +27,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>example</td>
-				<td>0</td>
-				<td>now</td>
+			<tr ng-repeat="record in leaderboard">
+				<td>
+					<figure class="avatar">
+						<img ng-src="{{record.picture}}" />
+					</figure>
+					record.fullName
+				</td>
+				<td>record.score</td>
+				<td>record.date</td>
 			</tr>
 		</tbody>
 	</table>
