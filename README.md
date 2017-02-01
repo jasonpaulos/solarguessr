@@ -20,7 +20,7 @@ Horizontal FOV: https://www.opengl.org/discussion_boards/showthread.php/168009-H
 
 Latitude/Longitude surface distance: http://www8.nau.edu/cvm/latlon_formula.html
 
-Mercator projection conversion: http://wiki.openstreetmap.org/wiki/Mercator
+Mercator projection conversion: http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
 
 Text stroke: https://css-tricks.com/adding-stroke-to-web-text/
 

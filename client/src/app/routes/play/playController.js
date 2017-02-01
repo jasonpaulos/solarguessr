@@ -154,7 +154,7 @@ app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'sc
 	                                fileExtension: 'jpg'
 	                        });
 	
-	                        layers.removeAll()
+	                        layers.removeAll();
 	                        layers.addImageryProvider(imageryProvider);
 	
 	                        actualLocation.location.lon = getRandomArbitrary(-180.0, 180.0);
@@ -189,9 +189,8 @@ app.controller('PlayController', ['$scope', '$timeout', 'modals', 'planets', 'sc
 					
 					var lon = 360.0 * (offsetX / event.target.clientWidth) - 180.0;
 					
-					//Equation from http://wiki.openstreetmap.org/wiki/Mercator
-					var g = (offsetY - event.target.clientHeight/2) / (-(event.target.clientHeight / (2 * Math.PI)));
-					var lat = 180.0 / Math.PI * (2 * Math.atan(Math.exp(g)) - 0.5 * Math.PI);
+					//Equation from http://wiki.openstreetmap.org/wiki/Slippy_map_tilenames
+					var lat = Math.atan(Math.sinh(Cesium.Math.PI - 2 * Cesium.Math.PI * offsetY / event.target.clientHeight)) * 180.0 / Cesium.Math.PI;
 					
 					this.guess.location = {
 						lon: lon,
